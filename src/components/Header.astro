@@ -12,9 +12,7 @@ const current = Astro.url.pathname;
 <header class="site-header">
   <div class="wrap site-header__bar">
     <a href="/" class="site-header__logo">
-      <!-- Replace with the official Rotaract logo mark when available -->
-      <span class="site-header__mark" aria-hidden="true">R</span>
-      <span>Rotaract KUL</span>
+      <img class="site-header__mark" src="/images/rotaract-logo.svg" alt="Rotaract KUL" width="1390" height="503" />
     </a>
 
     <button class="site-header__toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
@@ -57,24 +55,13 @@ const current = Astro.url.pathname;
   .site-header__logo {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
     text-decoration: none;
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    color: var(--charcoal);
   }
 
   .site-header__mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background: var(--burgundy-900);
-    color: var(--paper);
-    font-family: var(--font-display);
-    font-size: 1rem;
+    height: 2.5rem;
+    width: auto;
+    object-fit: contain;
   }
 
   .site-header__nav {
