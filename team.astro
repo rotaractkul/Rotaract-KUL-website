@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TeamCard from '../components/TeamCard.astro';
+import { getCollection } from 'astro:content';
+
+const members = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout
+  title="Our Team"
+  description="Meet the board of Rotaract KUL: President, Treasurer, Marketing & Events, Partnerships and HR."
+>
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Our team</p>
+      <h1>The people behind it.</h1>
+      <p class="intro-lede">Placeholder profiles below — replace the photo, name and bio in each team member's file once confirmed.</p>
+      <div class="grid grid--3 team-grid">
+        {members.map(m => (
+          <TeamCard name={m.data.name} role={m.data.role} photo={m.data.photo} linkedin={m.data.linkedin} bio={m.body?.trim()} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro-lede { max-width: 60ch; color: var(--stone); font-size: 1.05rem; margin-bottom: 3rem; }
+  .team-grid { row-gap: 3rem; }
+</style>

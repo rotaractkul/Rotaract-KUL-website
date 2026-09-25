@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT_EMAIL } from '../site-config';
+
+const areas = [
+  'Sponsoring an event or a full year of activities',
+  'Hosting a workshop or speaker session',
+  'Offering internships or company visits',
+  'Co-running a volunteering initiative',
+  'Joint projects with another student association or Rotary club',
+];
+---
+<BaseLayout
+  title="Partnerships"
+  description="How companies, NGOs, Rotary clubs and other student organisations can collaborate with Rotaract KUL."
+>
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Partnerships</p>
+      <h1>Build something with us.</h1>
+      <p class="intro-lede">We work with companies, NGOs, Rotary clubs and other student organisations that share our interest in service, professional development and student engagement.</p>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap">
+      <h2>Ways to collaborate</h2>
+      <ul class="plain-list">
+        {areas.map(a => <li>{a}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="wrap cta-block">
+      <h2>Let's talk</h2>
+      <p>Tell us a bit about your organisation and what you have in mind — we'll get back to you.</p>
+      <a class="btn btn--primary" href={`mailto:${CONTACT_EMAIL}`}>Email the board</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro-lede { max-width: 60ch; color: var(--stone); font-size: 1.1rem; }
+  .plain-list { margin: 0; padding-left: 1.1rem; color: var(--stone); display: grid; gap: 0.6rem; max-width: 60ch; }
+  .cta-block { max-width: 44ch; }
+  .cta-block p { margin-bottom: 1.75rem; }
+</style>

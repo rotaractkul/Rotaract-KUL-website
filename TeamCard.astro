@@ -1,0 +1,66 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  bio?: string;
+  photo?: string;
+  linkedin?: string;
+}
+
+const { name, role, bio, photo, linkedin } = Astro.props;
+---
+<article class="team-card">
+  <div class="team-card__photo" style={photo ? `background-image:url(${photo})` : ''}>
+    {!photo && <span>Photo</span>}
+  </div>
+  <h3>{name}</h3>
+  <p class="team-card__role">{role}</p>
+  {bio && <p class="team-card__bio">{bio}</p>}
+  {linkedin && (
+    <a href={linkedin} target="_blank" rel="noopener noreferrer" class="team-card__linkedin">LinkedIn ↗</a>
+  )}
+</article>
+
+<style>
+  .team-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .team-card__photo {
+    aspect-ratio: 1;
+    background: var(--paper-dim);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--stone);
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .team-card h3 { margin-bottom: 0; font-size: 1.2rem; }
+
+  .team-card__role {
+    margin: 0;
+    color: var(--burgundy-600);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .team-card__bio {
+    margin: 0.3rem 0 0;
+    font-size: 0.9rem;
+    color: var(--stone);
+  }
+
+  .team-card__linkedin {
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--charcoal);
+    font-weight: 600;
+  }
+</style>

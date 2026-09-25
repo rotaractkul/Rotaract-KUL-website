@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Color */
+  --burgundy-900: #6E1423;
+  --burgundy-600: #9B2C3E;
+  --paper: #FDFCFB;
+  --paper-dim: #F3EFEA;
+  --charcoal: #1B1917;
+  --stone: #8A8377;
+  --gold: #C6A15B;
+
+  /* Type */
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-body: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Layout */
+  --content-width: 1180px;
+  --gutter: clamp(1.5rem, 5vw, 4rem);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0 0 0.5em;
+  color: var(--charcoal);
+}
+
+h1 { font-size: clamp(2.6rem, 6vw, 5rem); font-weight: 400; letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.9rem, 3.4vw, 2.75rem); }
+h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); }
+
+p { max-width: 62ch; }
+
+a { color: inherit; }
+
+img { max-width: 100%; display: block; }
+
+.wrap {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section {
+  padding: clamp(3.5rem, 8vw, 7rem) 0;
+}
+
+.section--dark {
+  background: var(--charcoal);
+  color: var(--paper);
+}
+.section--dark h1, .section--dark h2, .section--dark h3 { color: var(--paper); }
+.section--dark p { color: #D8D3CC; }
+
+.section--tint {
+  background: var(--paper-dim);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--burgundy-600);
+  margin: 0 0 0.9rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 3px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.btn--primary {
+  background: var(--burgundy-900);
+  color: var(--paper);
+}
+.btn--primary:hover { background: var(--burgundy-600); }
+
+.btn--ghost {
+  background: transparent;
+  border-color: currentColor;
+  color: inherit;
+}
+.btn--ghost:hover { background: rgba(0,0,0,0.04); }
+
+.section--dark .btn--ghost:hover { background: rgba(255,255,255,0.08); }
+
+.grid {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+@media (max-width: 860px) {
+  .grid--2, .grid--3 { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: var(--paper);
+  border: 1px solid #E7E1D8;
+}
+
+.divider {
+  height: 1px;
+  background: #E7E1D8;
+  border: none;
+  margin: 0;
+}
+
+.section--dark .divider { background: rgba(255,255,255,0.15); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--burgundy-600);
+  outline-offset: 3px;
+}

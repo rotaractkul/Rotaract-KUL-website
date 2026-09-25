@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EventCard from '../components/EventCard.astro';
+import { getCollection } from 'astro:content';
+import { JOIN_FORM_URL } from '../site-config';
+
+const events = (await getCollection('events'))
+  .filter(e => e.data.status === 'upcoming')
+  .sort((a, b) => a.data.date.localeCompare(b.data.date))
+  .slice(0, 2);
+
+const pillars = [
+  { title: 'Community Service', body: 'Local projects that put students to work alongside the people who need it most.' },
+  { title: 'Professional Growth', body: 'Workshops, mentorship and company visits that build skills beyond the lecture hall.' },
+  { title: 'Global Network', body: 'A seat at the table of Rotaract and Rotary — a community that spans continents.' },
+];
+---
+<BaseLayout
+  title="Home"
+  description="Rotaract KUL is a student community at KU Leuven built around service, professional growth and international connection."
+>
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="hero__text">
+        <p class="eyebrow">Leuven · Est. 2026</p>
+        <h1>Rotaract KUL</h1>
+        <p class="hero__lede">A student community built on service, growth and genuine connection — open to anyone at KU Leuven and Odisee ready to put ambition to work for others.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="/join-us">Join Us</a>
+          <a class="btn btn--ghost" href="/about">Discover Rotaract KUL</a>
+        </div>
+      </div>
+      <div class="hero__media">
+        <span>Photo placeholder — group or event photography</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap who">
+      <div>
+        <p class="eyebrow">Who we are</p>
+        <h2>A local chapter of a global idea.</h2>
+      </div>
+      <p>Rotaract KUL brings students together to turn spare time into real impact — through service projects, professional development and a network that stretches well past graduation. We're newly relaunching, built by students who wanted more than a club: a community with a purpose.</p>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap">
+      <p class="eyebrow">What drives us</p>
+      <h2>Three pillars, one community.</h2>
+      <div class="grid grid--3 pillars">
+        {pillars.map(p => (
+          <div class="pillar">
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">What's next</p>
+          <h2>Upcoming events.</h2>
+        </div>
+        <a class="btn btn--ghost" href="/events">See all events</a>
+      </div>
+      <div class="grid grid--2">
+        {events.map(event => (
+          <EventCard {...event.data} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="wrap cta-block">
+      <h2>Ready to get involved?</h2>
+      <p>No experience required — just curiosity and a willingness to show up.</p>
+      <a class="btn btn--primary" href="/join-us">Apply to join</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { padding: clamp(3rem, 8vw, 6rem) 0 0; }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .hero__lede {
+    font-size: 1.15rem;
+    color: var(--stone);
+    max-width: 46ch;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .hero__media {
+    aspect-ratio: 4 / 5;
+    background: var(--paper-dim);
+    border: 1px solid #E7E1D8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--stone);
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+
+  .who {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .who h2 { margin-bottom: 0; }
+  .who p { max-width: 60ch; color: var(--stone); font-size: 1.05rem; }
+
+  .pillars { margin-top: 2.5rem; }
+  .pillar { padding-top: 1.5rem; border-top: 1px solid #DCD5C9; }
+  .pillar p { color: var(--stone); }
+
+  .section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .section-heading h2 { margin-bottom: 0; }
+
+  .cta-block { text-align: left; max-width: 40ch; }
+  .cta-block p { margin-bottom: 1.75rem; }
+
+  @media (max-width: 860px) {
+    .hero__grid, .who { grid-template-columns: 1fr; }
+    .hero__media { order: -1; }
+  }
+</style>

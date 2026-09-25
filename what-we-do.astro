@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const areas = [
+  {
+    title: 'Community Service',
+    body: 'Hands-on projects with local partners — from collection drives to volunteering days — chosen for real, visible impact rather than a line on a CV.',
+  },
+  {
+    title: 'Professional Development',
+    body: 'Workshops, company visits and mentorship sessions that build the skills lecture halls tend to skip: negotiation, public speaking, project ownership.',
+  },
+  {
+    title: 'Networking',
+    body: 'Access to the wider Rotaract and Rotary community — students, alumni and professionals across dozens of countries.',
+  },
+  {
+    title: 'Social Events',
+    body: 'Dinners, mixers and trips that turn a list of members into an actual community.',
+  },
+];
+---
+<BaseLayout
+  title="What We Do"
+  description="The four areas Rotaract KUL organises activities around: community service, professional development, networking and social events."
+>
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">What we do</p>
+      <h1>Four areas, one club.</h1>
+      <p class="intro-lede">Everything we run falls into one of four areas. Each has room to grow as the club does — these are the starting points, not the ceiling.</p>
+    </div>
+  </section>
+
+  {areas.map((area, i) => (
+    <section class={`section area ${i % 2 === 1 ? 'section--tint' : ''}`}>
+      <div class="wrap area__grid">
+        <div class="area__media">
+          <span>Photo placeholder</span>
+        </div>
+        <div>
+          <h2>{area.title}</h2>
+          <p>{area.body}</p>
+          <p class="area__note">Example activities will be added here as they're planned and run.</p>
+        </div>
+      </div>
+    </section>
+  ))}
+</BaseLayout>
+
+<style>
+  .intro-lede { max-width: 60ch; color: var(--stone); font-size: 1.05rem; }
+
+  .area__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .area__media {
+    aspect-ratio: 4 / 3;
+    background: var(--paper-dim);
+    border: 1px solid #E7E1D8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--stone);
+    font-size: 0.9rem;
+  }
+
+  .area__note {
+    color: var(--stone);
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  @media (max-width: 860px) {
+    .area__grid { grid-template-columns: 1fr; }
+  }
+</style>

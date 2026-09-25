@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT_EMAIL, INSTAGRAM_URL, LINKEDIN_URL } from '../site-config';
+---
+<BaseLayout
+  title="Contact"
+  description="Get in touch with Rotaract KUL by email, Instagram or LinkedIn."
+>
+  <section class="section contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h1>Say hello.</h1>
+      <p class="intro-lede">Questions about membership, events or partnerships — reach us here.</p>
+
+      <dl class="contact-list">
+        <div>
+          <dt>Email</dt>
+          <dd><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></dd>
+        </div>
+        <div>
+          <dt>Instagram</dt>
+          <dd><a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">@rotaractkul</a></dd>
+        </div>
+        <div>
+          <dt>LinkedIn</dt>
+          <dd><a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">Rotaract KUL</a></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro-lede { max-width: 60ch; color: var(--stone); font-size: 1.1rem; margin-bottom: 2.5rem; }
+
+  .contact-list {
+    display: grid;
+    gap: 1.75rem;
+    max-width: 40ch;
+    margin: 0;
+  }
+  .contact-list dt {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--burgundy-600);
+    margin-bottom: 0.25rem;
+  }
+  .contact-list dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+  }
+  .contact-list a { text-decoration: none; }
+  .contact-list a:hover { color: var(--burgundy-600); }
+</style>
