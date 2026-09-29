@@ -1,40 +1,59 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pillars = [
+  { title: 'Learn', body: 'We build practical skills through responsibility — taking on real projects, not just attending them, and learning by doing.' },
+  { title: 'Connect', body: 'We meet people we wouldn\u2019t otherwise cross paths with, build genuine relationships, and plug into the wider Rotaract network.' },
+  { title: 'Serve', body: 'We put time toward causes that matter, volunteering with purpose and working together to create real, positive impact.' },
+];
 ---
 <BaseLayout
   title="About"
-  description="Learn about Rotaract KUL's mission, vision and its connection to the wider Rotaract and Rotary network."
+  description="Rotaract KUL Campus Brussels is a student association built on three ideas: learn, connect and serve — part of the international Rotaract community."
 >
   <section class="section">
     <div class="wrap intro">
       <p class="eyebrow">About us</p>
       <h1>Students first. Service always.</h1>
-      <p>Rotaract KUL is a student-led association built around the Rotaract model: a community of young people organising service, professional development and social impact for and with each other. We are a student initiative — not a formal organ of KU Leuven — welcoming students from KU Leuven, Odisee and beyond who want to do more with their time at university.</p>
+      <p>Rotaract KUL Campus Brussels is a student-led association built on three simple ideas: learn, connect and serve. We bring students together to take on real responsibility, build genuine relationships and put time toward things that matter — as part of the wider international Rotaract community.</p>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="grid grid--3 pillars">
+        {pillars.map(p => (
+          <div class="pillar">
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid--2">
+      <div>
+        <h2>Our mission</h2>
+        <p>To give students the chance to learn, connect and serve — taking on real responsibility, building relationships that last, and contributing to initiatives that matter, all through practical, hands-on experience.</p>
+      </div>
+      <div>
+        <h2>Our vision</h2>
+        <p>A student community where service is a natural part of university life, where members grow personally and professionally simply by participating, and where that experience connects them to a much larger, international Rotaract community.</p>
+      </div>
     </div>
   </section>
 
   <section class="section section--tint">
     <div class="wrap grid grid--2">
       <div>
-        <h2>Our mission</h2>
-        <p>To give students a structured, welcoming way to serve their community, build professional skills and form lasting international friendships — grounded in the values of Rotaract.</p>
-      </div>
-      <div>
-        <h2>Our vision</h2>
-        <p>A generation of students who see service and leadership as part of student life, not an afterthought — carrying that habit with them long after graduation.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap grid grid--2">
-      <div>
         <h2>What Rotaract is</h2>
-        <p>Rotaract is a global network of service-based clubs for young people, sponsored by Rotary International. Clubs organise their own service projects and professional development activities while staying connected to a much larger community of Rotaractors and Rotarians worldwide.</p>
+        <p>Rotaract is an international network of young people and clubs connected to Rotary International, built around service, leadership, personal development and community.</p>
       </div>
       <div>
         <h2>Our place in that network</h2>
-        <p>Rotaract KUL is being relaunched as part of that global family. We're building local relationships with Rotary clubs and the broader Rotaract community as we grow, and we'll share confirmed sponsorship and affiliation details here as they're finalised.</p>
+        <p>Rotaract KUL Campus Brussels is part of that broader Rotaract community, and we're building the local relationships that connect our members to it as we grow.</p>
       </div>
     </div>
   </section>
@@ -43,4 +62,5 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <style>
   .intro { max-width: 70ch; }
   .intro p { font-size: 1.1rem; color: var(--stone); }
+  .pillars .pillar { padding-top: 0; border-top: none; }
 </style>

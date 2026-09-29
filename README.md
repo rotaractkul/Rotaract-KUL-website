@@ -1,6 +1,6 @@
-# Rotaract KUL website
+# Rotaract KUL Campus Brussels website
 
-This is the source code for the Rotaract KUL website, built with [Astro](https://astro.build). You don't need to understand the code to run or update the site — this guide walks through everything step by step.
+This is the source code for the Rotaract KUL Campus Brussels website, built with [Astro](https://astro.build). You don't need to understand the code to run or update the site — this guide walks through everything step by step.
 
 ## What's inside
 

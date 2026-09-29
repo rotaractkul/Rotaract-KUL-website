@@ -7,7 +7,7 @@ const members = (await getCollection('team')).sort((a, b) => a.data.order - b.da
 ---
 <BaseLayout
   title="Our Team"
-  description="Meet the board of Rotaract KUL: President, Treasurer, Marketing & Events, Partnerships and HR."
+  description="Meet the board of Rotaract KUL Campus Brussels: President, Treasurer & Head of Finance, Marketing, Events, Partnerships & External Relations, and People & Memberships."
 >
   <section class="section">
     <div class="wrap">
@@ -16,7 +16,7 @@ const members = (await getCollection('team')).sort((a, b) => a.data.order - b.da
       <p class="intro-lede">Placeholder profiles below — replace the photo, name and bio in each team member's file once confirmed.</p>
       <div class="grid grid--3 team-grid">
         {members.map(m => (
-          <TeamCard name={m.data.name} role={m.data.role} photo={m.data.photo} linkedin={m.data.linkedin} bio={m.body?.trim()} />
+          <TeamCard name={m.data.name} role={m.data.role} department={m.data.department} photo={m.data.photo} linkedin={m.data.linkedin} bio={m.body?.trim()} />
         ))}
       </div>
     </div>

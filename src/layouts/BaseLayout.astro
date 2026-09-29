@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const pageTitle = `${title} — Rotaract KUL`;
+const pageTitle = `${title} — Rotaract KUL Campus Brussels`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
@@ -28,7 +28,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:image" content={new URL('/images/og-cover.jpg', Astro.site)} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/images/rotaract-wheel.svg" />
   </head>
   <body>
     <a class="visually-hidden" href="#main">Skip to content</a>

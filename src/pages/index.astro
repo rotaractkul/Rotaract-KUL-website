@@ -1,13 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import EventCard from '../components/EventCard.astro';
-import { getCollection } from 'astro:content';
-import { JOIN_FORM_URL } from '../site-config';
-
-const events = (await getCollection('events'))
-  .filter(e => e.data.status === 'upcoming')
-  .sort((a, b) => a.data.date.localeCompare(b.data.date))
-  .slice(0, 2);
 
 const pillars = [
   { title: 'Community Service', body: 'Local projects that put students to work alongside the people who need it most.' },
@@ -17,17 +9,17 @@ const pillars = [
 ---
 <BaseLayout
   title="Home"
-  description="Rotaract KUL is a student community at KU Leuven built around service, professional growth and international connection."
+  description="Rotaract KUL Campus Brussels is a student community built around service, professional growth and international connection."
 >
   <section class="hero">
     <div class="wrap hero__grid">
       <div class="hero__text">
-        <p class="eyebrow">Leuven · Est. 2026</p>
-        <h1>Rotaract KUL</h1>
-        <p class="hero__lede">A student community built on service, growth and genuine connection — open to anyone at KU Leuven and Odisee ready to put ambition to work for others.</p>
+        <p class="eyebrow">Brussels · Est. 2026</p>
+        <h1>Rotaract KUL Campus Brussels</h1>
+        <p class="hero__lede">A student community built on service, growth and genuine connection — open to students ready to put ambition to work for others.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="/join-us">Join Us</a>
-          <a class="btn btn--ghost" href="/about">Discover Rotaract KUL</a>
+          <a class="btn btn--ghost" href="/about">Discover Rotaract KUL Campus Brussels</a>
         </div>
       </div>
       <div class="hero__media">
@@ -42,7 +34,7 @@ const pillars = [
         <p class="eyebrow">Who we are</p>
         <h2>A local chapter of a global idea.</h2>
       </div>
-      <p>Rotaract KUL brings students together to turn spare time into real impact — through service projects, professional development and a network that stretches well past graduation. We're newly relaunching, built by students who wanted more than a club: a community with a purpose.</p>
+      <p>Rotaract KUL Campus Brussels brings students together to turn spare time into real impact — through service projects, professional development and a network that stretches well past graduation. We're newly relaunching, built by students who wanted more than a club: a community with a purpose.</p>
     </div>
   </section>
 
@@ -66,15 +58,11 @@ const pillars = [
       <div class="section-heading">
         <div>
           <p class="eyebrow">What's next</p>
-          <h2>Upcoming events.</h2>
+          <h2>Events, coming soon.</h2>
         </div>
-        <a class="btn btn--ghost" href="/events">See all events</a>
+        <a class="btn btn--ghost" href="/events">Visit events page</a>
       </div>
-      <div class="grid grid--2">
-        {events.map(event => (
-          <EventCard {...event.data} />
-        ))}
-      </div>
+      <p class="events-teaser">We're currently preparing our first activities — check the events page for updates.</p>
     </div>
   </section>
 
@@ -146,6 +134,8 @@ const pillars = [
     flex-wrap: wrap;
   }
   .section-heading h2 { margin-bottom: 0; }
+
+  .events-teaser { color: var(--stone); font-size: 1.05rem; max-width: 60ch; }
 
   .cta-block { text-align: left; max-width: 40ch; }
   .cta-block p { margin-bottom: 1.75rem; }
